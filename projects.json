@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-04T01:30:20.991Z",
-  "count": 18,
+  "generatedAt": "2026-06-05T09:23:07.451Z",
+  "count": 38,
   "projects": [
     {
       "slug": "2048 Game",
@@ -18,7 +18,63 @@
       "entry": "Projects/2048%20Game/index.html",
       "folder": "Projects/2048%20Game",
       "thumbnail": "Projects/2048%20Game/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.730Z"
+      "addedAt": "2026-06-05T09:23:03.075Z"
+    },
+    {
+      "slug": "Age Calculator",
+      "title": "Age Calculator",
+      "description": "An elegant, comprehensive calculation interface that evaluates granular chronological profiles including exact days lived, total active stats, and live next-birthday countdown tracking.",
+      "author": {
+        "name": "Shruti Narsulwar",
+        "github": "Shrutiii01"
+      },
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "entry": "Projects/Age%20Calculator/index.html",
+      "folder": "Projects/Age%20Calculator",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.075Z"
+    },
+    {
+      "slug": "Blog",
+      "title": "Blog",
+      "description": "My personal blog",
+      "author": {
+        "name": "Unknown",
+        "github": "no one"
+      },
+      "tags": [
+        "blog",
+        "web",
+        "js",
+        "html",
+        "css"
+      ],
+      "entry": "Projects/Blog/index.html",
+      "folder": "Projects/Blog",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.076Z"
+    },
+    {
+      "slug": "Calendar And Scheduling App",
+      "title": "Calendar And Scheduling App",
+      "description": "An interactive organizational grid application featuring real-time date compilation, localized monthly display matrices, categorized event registration streams, and dynamic chronological agenda views.",
+      "author": {
+        "name": "Shruti Narsulwar",
+        "github": "Shrutiii01"
+      },
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "entry": "Projects/Calendar%20And%20Scheduling%20App/index.html",
+      "folder": "Projects/Calendar%20And%20Scheduling%20App",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.078Z"
     },
     {
       "slug": "Chat Room",
@@ -37,8 +93,8 @@
       ],
       "entry": "Projects/Chat%20Room/index.html",
       "folder": "Projects/Chat%20Room",
-      "thumbnail": "Projects/Chat%20Room/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.730Z"
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.079Z"
     },
     {
       "slug": "Color Palette Generator",
@@ -56,8 +112,8 @@
       ],
       "entry": "Projects/Color%20Palette%20Generator/index.html",
       "folder": "Projects/Color%20Palette%20Generator",
-      "thumbnail": "Projects/Color%20Palette%20Generator/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.731Z"
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.079Z"
     },
     {
       "slug": "Daily Wheels",
@@ -75,26 +131,48 @@
       "entry": "Projects/Daily%20Wheels/index.html",
       "folder": "Projects/Daily%20Wheels",
       "thumbnail": "Projects/Daily%20Wheels/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.731Z"
+      "addedAt": "2026-06-05T09:23:03.079Z"
     },
     {
       "slug": "Developer Portfolio Builder",
       "title": "Developer Portfolio Builder",
-      "description": "An interactive tool to build, customize, preview, and download professional developer portfolios in real time.",
+      "description": "A modern developer portfolio builder with live preview, customizable sections, responsive templates, and export-ready portfolio pages.",
       "author": {
         "name": "Mistry Vishwa",
         "github": "MistryVishwa"
       },
       "tags": [
-        "productivity",
         "portfolio",
+        "builder",
         "vanilla-js",
-        "localstorage"
+        "responsive",
+        "dashboard",
+        "ui"
       ],
       "entry": "Projects/Developer%20Portfolio%20Builder/index.html",
       "folder": "Projects/Developer%20Portfolio%20Builder",
-      "thumbnail": "Projects/Developer%20Portfolio%20Builder/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.731Z"
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.080Z"
+    },
+    {
+      "slug": "Dice Roller Simulator",
+      "title": "Dice Roller Simulator",
+      "description": "Simulate rolling one or multiple 3D dice with advanced physics, sound synthesis, history analytics, and themes.",
+      "author": {
+        "name": "Mistry Vishwa",
+        "github": "MistryVishwa"
+      },
+      "tags": [
+        "game",
+        "simulator",
+        "3d-css",
+        "web-audio",
+        "analytics"
+      ],
+      "entry": "Projects/Dice%20Roller%20Simulator/index.html",
+      "folder": "Projects/Dice%20Roller%20Simulator",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.080Z"
     },
     {
       "slug": "Digital Clock",
@@ -112,7 +190,28 @@
       "entry": "Projects/Digital%20Clock/index.html",
       "folder": "Projects/Digital%20Clock",
       "thumbnail": null,
-      "addedAt": "2026-06-04T01:30:16.732Z"
+      "addedAt": "2026-06-05T09:23:03.081Z"
+    },
+    {
+      "slug": "Ecommerce Store",
+      "title": "Ecommerce Store",
+      "description": "A premium e-commerce storefront with dynamic product catalog, multi-attribute filtering, sorting, glassmorphic cart drawer, step-based checkout with validation, and real-time card preview.",
+      "author": {
+        "name": "Girish Madarkar",
+        "github": "Girish0902"
+      },
+      "tags": [
+        "e-commerce",
+        "storefront",
+        "vanilla-js",
+        "filtering",
+        "cart",
+        "checkout"
+      ],
+      "entry": "Projects/Ecommerce%20Store/index.html",
+      "folder": "Projects/Ecommerce%20Store",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.081Z"
     },
     {
       "slug": "Expense Tracker",
@@ -131,7 +230,85 @@
       "entry": "Projects/Expense%20Tracker/index.html",
       "folder": "Projects/Expense%20Tracker",
       "thumbnail": "Projects/Expense%20Tracker/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.732Z"
+      "addedAt": "2026-06-05T09:23:03.081Z"
+    },
+    {
+      "slug": "Fitness Progress Dashboard",
+      "title": "Fitness Progress Dashboard",
+      "description": "Visualize workouts, calories, weight trends, and activity summaries with interactive charts.",
+      "author": {
+        "name": "Vishwa Mistry",
+        "github": "MistryVishwa"
+      },
+      "tags": [
+        "dashboard",
+        "fitness",
+        "chart-js",
+        "localstorage",
+        "analytics"
+      ],
+      "entry": "Projects/Fitness%20Progress%20Dashboard/index.html",
+      "folder": "Projects/Fitness%20Progress%20Dashboard",
+      "thumbnail": "Projects/Fitness%20Progress%20Dashboard/thumbnail.svg",
+      "addedAt": "2026-06-05T09:23:03.082Z"
+    },
+    {
+      "slug": "Food Delivary App Ui",
+      "title": "Food Delivary App Ui",
+      "description": "An ultra-premium dark themed food exploration and delivery platform built using zero-dependency vanilla workflows, featuring real-time catalog search filters, food modifier drawers, and a live tracking progress simulator.",
+      "author": {
+        "name": "Shruti Narsulwar",
+        "github": "shrutiii01"
+      },
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "entry": "Projects/Food%20Delivary%20App%20Ui/index.html",
+      "folder": "Projects/Food%20Delivary%20App%20Ui",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.082Z"
+    },
+    {
+      "slug": "GitHub User Search",
+      "title": "GitHub User Search",
+      "description": "A premium search dashboard to fetch, display, and cache GitHub developer profiles and recent repositories.",
+      "author": {
+        "name": "Mistry Vishwa",
+        "github": "MistryVishwa"
+      },
+      "tags": [
+        "api",
+        "search",
+        "github",
+        "localstorage"
+      ],
+      "entry": "Projects/GitHub%20User%20Search/index.html",
+      "folder": "Projects/GitHub%20User%20Search",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.082Z"
+    },
+    {
+      "slug": "Habit Tracker",
+      "title": "Habit Tracker",
+      "description": "habit-bloom is a beautiful habit-tracking web app that help users build consistency",
+      "author": {
+        "name": "amandeep kujur",
+        "github": "aman-bot06"
+      },
+      "tags": [
+        "Responsive UI",
+        "Local Storage",
+        "Dark Mode",
+        "Habit Tracker",
+        "GitHub Contribution Graph",
+        "API Integration"
+      ],
+      "entry": "Projects/Habit%20Tracker/index.html",
+      "folder": "Projects/Habit%20Tracker",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.083Z"
     },
     {
       "slug": "Image Gallery",
@@ -150,7 +327,68 @@
       "entry": "Projects/Image%20Gallery/index.html",
       "folder": "Projects/Image%20Gallery",
       "thumbnail": "Projects/Image%20Gallery/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.733Z"
+      "addedAt": "2026-06-05T09:23:03.084Z"
+    },
+    {
+      "slug": "Invoice Billing Generator",
+      "title": "Invoice Billing Generator",
+      "description": "A web app to create invoices, add line items, calculate totals, and export as PDF.",
+      "author": {
+        "name": "Muskan Kumari",
+        "github": "Muskankr"
+      },
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PDF",
+        "Billing",
+        "Invoice"
+      ],
+      "entry": "Projects/Invoice%20Billing%20Generator/index.html",
+      "folder": "Projects/Invoice%20Billing%20Generator",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.085Z"
+    },
+    {
+      "slug": "Job Application Tracker",
+      "title": "Job Application Tracker",
+      "description": "Manage job applications, application statuses, interview dates, and notes using a Kanban-style interface.",
+      "author": {
+        "name": "MistryVishwa",
+        "github": "MistryVishwa"
+      },
+      "tags": [
+        "kanban",
+        "productivity",
+        "drag-and-drop",
+        "localstorage",
+        "statistics"
+      ],
+      "entry": "Projects/Job%20Application%20Tracker/index.html",
+      "folder": "Projects/Job%20Application%20Tracker",
+      "thumbnail": "Projects/Job%20Application%20Tracker/thumbnail.svg",
+      "addedAt": "2026-06-05T09:23:03.085Z"
+    },
+    {
+      "slug": "Linkedln Clone",
+      "title": "Linkedln Clone",
+      "description": "A polished LinkedIn desktop clone with interactive profile banner, edit modal, dynamic post feed with emoji/likes/comments, networking recommendation deck with connect simulation, print-ready resume view, and localStorage persistence.",
+      "author": {
+        "name": "Girish Madarkar",
+        "github": "Girish0902"
+      },
+      "tags": [
+        "linkedin",
+        "clone",
+        "vanilla-js",
+        "social",
+        "profile"
+      ],
+      "entry": "Projects/Linkedln%20Clone/index.html",
+      "folder": "Projects/Linkedln%20Clone",
+      "thumbnail": "Projects/Linkedln%20Clone/thumbnail.svg",
+      "addedAt": "2026-06-05T09:23:03.086Z"
     },
     {
       "slug": "Markdown Editor",
@@ -170,7 +408,7 @@
       "entry": "Projects/Markdown%20Editor/index.html",
       "folder": "Projects/Markdown%20Editor",
       "thumbnail": "Projects/Markdown%20Editor/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.733Z"
+      "addedAt": "2026-06-05T09:23:03.086Z"
     },
     {
       "slug": "Memory Card Game",
@@ -191,7 +429,7 @@
       "entry": "Projects/Memory%20Card%20Game/index.html",
       "folder": "Projects/Memory%20Card%20Game",
       "thumbnail": null,
-      "addedAt": "2026-06-04T01:30:16.733Z"
+      "addedAt": "2026-06-05T09:23:03.086Z"
     },
     {
       "slug": "Movie Search App",
@@ -210,8 +448,8 @@
       ],
       "entry": "Projects/Movie%20Search%20App/index.html",
       "folder": "Projects/Movie%20Search%20App",
-      "thumbnail": "Projects/Movie%20Search%20App/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.734Z"
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.087Z"
     },
     {
       "slug": "Music Player",
@@ -231,7 +469,48 @@
       "entry": "Projects/Music%20Player/index.html",
       "folder": "Projects/Music%20Player",
       "thumbnail": "Projects/Music%20Player/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.734Z"
+      "addedAt": "2026-06-05T09:23:03.087Z"
+    },
+    {
+      "slug": "Netflix Clone",
+      "title": "Netflix Clone",
+      "description": "A premium Netflix-inspired streaming UI with cinematic hero banner, dynamic multi-row content rails from static JSON, hover-scale cards with inline metadata, and a detailed movie modal — all vanilla JS.",
+      "author": {
+        "name": "Girish Madarkar",
+        "github": "Girish0902"
+      },
+      "tags": [
+        "netflix",
+        "streaming",
+        "vanilla-js",
+        "carousel",
+        "cinematic",
+        "responsive"
+      ],
+      "entry": "Projects/Netflix%20Clone/index.html",
+      "folder": "Projects/Netflix%20Clone",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.087Z"
+    },
+    {
+      "slug": "News Aggregator Interface",
+      "title": "News Aggregator Interface",
+      "description": "Browse categorized news cards, trending topics, search, and bookmarking.",
+      "author": {
+        "name": "Muskan Kumari",
+        "github": "Muskankr"
+      },
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "News",
+        "Aggregator"
+      ],
+      "entry": "Projects/News%20Aggregator%20Interface/index.html",
+      "folder": "Projects/News%20Aggregator%20Interface",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.088Z"
     },
     {
       "slug": "Notes App",
@@ -249,7 +528,7 @@
       "entry": "Projects/Notes%20App/index.html",
       "folder": "Projects/Notes%20App",
       "thumbnail": "Projects/Notes%20App/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.734Z"
+      "addedAt": "2026-06-05T09:23:03.088Z"
     },
     {
       "slug": "Password Generator",
@@ -268,7 +547,7 @@
       "entry": "Projects/Password%20Generator/index.html",
       "folder": "Projects/Password%20Generator",
       "thumbnail": "Projects/Password%20Generator/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.735Z"
+      "addedAt": "2026-06-05T09:23:03.088Z"
     },
     {
       "slug": "Pomodoro Timer",
@@ -288,7 +567,7 @@
       "entry": "Projects/Pomodoro%20Timer/index.html",
       "folder": "Projects/Pomodoro%20Timer",
       "thumbnail": "Projects/Pomodoro%20Timer/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.735Z"
+      "addedAt": "2026-06-05T09:23:03.089Z"
     },
     {
       "slug": "QR Code Generator",
@@ -306,7 +585,7 @@
       "entry": "Projects/QR%20Code%20Generator/index.html",
       "folder": "Projects/QR%20Code%20Generator",
       "thumbnail": null,
-      "addedAt": "2026-06-04T01:30:16.735Z"
+      "addedAt": "2026-06-05T09:23:03.089Z"
     },
     {
       "slug": "Quiz Master",
@@ -325,7 +604,119 @@
       "entry": "Projects/Quiz%20Master/index.html",
       "folder": "Projects/Quiz%20Master",
       "thumbnail": "Projects/Quiz%20Master/thumbnail.svg",
-      "addedAt": "2026-06-04T01:30:16.736Z"
+      "addedAt": "2026-06-05T09:23:03.089Z"
+    },
+    {
+      "slug": "Random Quote Generator",
+      "title": "Random Quote Generator",
+      "description": "Displays a random motivational or famous quote on button click.",
+      "author": {
+        "name": "Muskan Kumari",
+        "github": "Muskankr"
+      },
+      "tags": [
+        "utility",
+        "vanilla-js",
+        "api"
+      ],
+      "entry": "Projects/Random%20Quote%20Generator/index.html",
+      "folder": "Projects/Random%20Quote%20Generator",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.089Z"
+    },
+    {
+      "slug": "Real Estate Listing",
+      "title": "Real Estate Listing",
+      "description": "A modern property browsing app with advanced filtering, gallery layouts, and a favorites list saved to local storage.",
+      "author": {
+        "name": "Jayam Srivastava",
+        "github": "hrx01-dev"
+      },
+      "tags": [
+        "real-estate",
+        "ui-design",
+        "localstorage",
+        "vanilla-js"
+      ],
+      "entry": "Projects/Real%20Estate%20Listing/index.html",
+      "folder": "Projects/Real%20Estate%20Listing",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.090Z"
+    },
+    {
+      "slug": "Restaurant Ordering Interface",
+      "title": "Restaurant Ordering Interface",
+      "description": "An ultra-premium, zero-dependency restaurant menu browser and ordering interface designed around precise item option customizations, synchronized client cart processing metrics, and structural responsive constraints.",
+      "author": {
+        "name": "Shruti Narsulwar",
+        "github": "shrutiii01"
+      },
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "entry": "Projects/Restaurant%20Ordering%20Interface/index.html",
+      "folder": "Projects/Restaurant%20Ordering%20Interface",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.090Z"
+    },
+    {
+      "slug": "Resume Builder Form",
+      "title": "Resume Builder Form",
+      "description": "A dynamic resume builder with real-time preview, dual templates (Classic Minimalist & Modern Professional), customizable accent colors, tag-based skills/languages, photo upload via File Reader API, and print-to-PDF support.",
+      "author": {
+        "name": "Girish Madarkar",
+        "github": "Girish0902"
+      },
+      "tags": [
+        "resume",
+        "builder",
+        "vanilla-js",
+        "real-time",
+        "localstorage",
+        "print"
+      ],
+      "entry": "Projects/Resume%20Builder%20Form/index.html",
+      "folder": "Projects/Resume%20Builder%20Form",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.090Z"
+    },
+    {
+      "slug": "Travel Booking Dashboard",
+      "title": "Travel Booking Dashboard",
+      "description": "An integrated multi-column travel management layout featuring dynamic flight and accommodation routing selectors, client-side filtering grids, and reactive price calculations.",
+      "author": {
+        "name": "Shruti Narsulwar",
+        "github": "Shrutiii01"
+      },
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "entry": "Projects/Travel%20Booking%20Dashboard/index.html",
+      "folder": "Projects/Travel%20Booking%20Dashboard",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.091Z"
+    },
+    {
+      "slug": "Typing Speed Tester",
+      "title": "Typing Speed Tester",
+      "description": "Measure typing speed (WPM) and accuracy with a simple web app.",
+      "author": {
+        "name": "Muskan Kumari",
+        "github": "Muskankr"
+      },
+      "tags": [
+        "productivity",
+        "vanilla-js",
+        "learning"
+      ],
+      "entry": "Projects/Typing%20Speed%20Tester/index.html",
+      "folder": "Projects/Typing%20Speed%20Tester",
+      "thumbnail": null,
+      "addedAt": "2026-06-05T09:23:03.091Z"
     },
     {
       "slug": "Weather Finder",
@@ -343,7 +734,7 @@
       "entry": "Projects/Weather%20Finder/index.html",
       "folder": "Projects/Weather%20Finder",
       "thumbnail": null,
-      "addedAt": "2026-06-04T01:30:16.736Z"
+      "addedAt": "2026-06-05T09:23:03.091Z"
     }
   ]
 }

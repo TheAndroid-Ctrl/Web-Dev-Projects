@@ -12,8 +12,191 @@ const empty = document.getElementById("empty");
 const statCount = document.getElementById("stat-count");
 const statUpdated = document.getElementById("stat-updated");
 
-const state = { all: [], filtered: [], activeTag: null, query: "" };
-const state = { all: [], activeTag: null, query: "", sortBy: "default" };
+const state = { all: [], filtered: [], activeTag: null, query: "", sortBy: "default", authorFilter: null };
+
+/* ── GitHub Profile Cache ───────────────────────── */
+const ghProfileCache = new Map();
+
+function getCachedProfile(username) {
+  const key = `gh_profile_${username}`;
+  // Check in-memory cache first
+  if (ghProfileCache.has(username)) return ghProfileCache.get(username);
+  // Check localStorage
+  try {
+    const stored = localStorage.getItem(key);
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      // Cache for 1 hour
+      if (Date.now() - parsed._ts < 3600000) {
+        ghProfileCache.set(username, parsed);
+        return parsed;
+      }
+    }
+  } catch { /* ignore */ }
+  return null;
+}
+
+function setCachedProfile(username, data) {
+  data._ts = Date.now();
+  ghProfileCache.set(username, data);
+  try {
+    localStorage.setItem(`gh_profile_${username}`, JSON.stringify(data));
+  } catch { /* storage full – ignore */ }
+}
+
+/* ── Hover Card State ───────────────────────────── */
+let hoverTimeout = null;
+let activeHoverCard = null;
+
+function getLocalContributions(githubUsername) {
+  return state.all.filter(p => p.author && p.author.github && p.author.github.toLowerCase() === githubUsername.toLowerCase());
+}
+
+async function fetchGitHubProfile(username) {
+  const cached = getCachedProfile(username);
+  if (cached) return cached;
+  try {
+    const res = await fetch(`https://api.github.com/users/${username}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    const profile = {
+      name: data.name || username,
+      login: data.login,
+      avatar_url: data.avatar_url,
+      bio: data.bio || "",
+      location: data.location || "",
+      public_repos: data.public_repos || 0,
+      followers: data.followers || 0,
+      html_url: data.html_url,
+    };
+    setCachedProfile(username, profile);
+    return profile;
+  } catch {
+    return null;
+  }
+}
+
+function createHoverCard(profile, localProjects, githubUsername) {
+  const card = document.createElement("div");
+  card.className = "hover-card";
+
+  const localList = localProjects.slice(0, 4).map(p =>
+    `<li class="hover-card__project">${p.title}</li>`
+  ).join("");
+  const moreCount = localProjects.length > 4 ? `<li class="hover-card__project hover-card__more">+${localProjects.length - 4} more</li>` : "";
+
+  card.innerHTML = `
+    <div class="hover-card__header">
+      <img class="hover-card__avatar" src="${profile.avatar_url}" alt="${profile.name}" width="48" height="48" />
+      <div class="hover-card__identity">
+        <strong class="hover-card__name">${profile.name}</strong>
+        <span class="hover-card__login">@${profile.login}</span>
+      </div>
+    </div>
+    ${profile.bio ? `<p class="hover-card__bio">${profile.bio}</p>` : ""}
+    ${profile.location ? `<p class="hover-card__location"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> ${profile.location}</p>` : ""}
+    <div class="hover-card__stats">
+      <div class="hover-card__stat">
+        <span class="hover-card__stat-value">${profile.public_repos}</span>
+        <span class="hover-card__stat-label">Repos</span>
+      </div>
+      <div class="hover-card__stat">
+        <span class="hover-card__stat-value">${profile.followers}</span>
+        <span class="hover-card__stat-label">Followers</span>
+      </div>
+      <div class="hover-card__stat">
+        <span class="hover-card__stat-value">${localProjects.length}</span>
+        <span class="hover-card__stat-label">Here</span>
+      </div>
+    </div>
+    ${localProjects.length > 0 ? `
+      <div class="hover-card__contributions">
+        <span class="hover-card__contrib-label">Projects in this showcase</span>
+        <ul class="hover-card__project-list">${localList}${moreCount}</ul>
+      </div>
+    ` : ""}
+    <div class="hover-card__actions">
+      <a class="btn btn--ghost btn--sm hover-card__gh-link" href="${profile.html_url}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 .3a12 12 0 00-3.79 23.4c.6.1.82-.26.82-.58v-2.16c-3.34.73-4.04-1.61-4.04-1.61a3.18 3.18 0 00-1.33-1.76c-1.09-.74.08-.73.08-.73a2.52 2.52 0 011.84 1.24 2.56 2.56 0 003.5 1 2.56 2.56 0 01.76-1.6c-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.22 4.3 4.3 0 01.12-3.18s1-.32 3.3 1.23a11.38 11.38 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23a4.3 4.3 0 01.12 3.18 4.64 4.64 0 011.24 3.22c0 4.61-2.81 5.63-5.48 5.92a2.87 2.87 0 01.82 2.23v3.29c0 .32.21.7.82.58A12 12 0 0012 .3z"/></svg>
+        View Profile
+      </a>
+      <button class="btn btn--primary btn--sm hover-card__filter-btn" type="button" data-github="${githubUsername}">Show All Projects</button>
+    </div>
+  `;
+
+  // "Show All Projects" button
+  card.querySelector(".hover-card__filter-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const gh = e.currentTarget.dataset.github;
+    state.authorFilter = gh;
+    state.activeTag = null;
+    state.query = "";
+    search.value = "";
+    renderTagbar();
+    render();
+    dismissHoverCard();
+    // Scroll to grid
+    grid.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  return card;
+}
+
+function positionHoverCard(card, anchorEl) {
+  document.body.appendChild(card);
+  const anchorRect = anchorEl.getBoundingClientRect();
+  const cardRect = card.getBoundingClientRect();
+
+  let top = anchorRect.bottom + 8 + window.scrollY;
+  let left = anchorRect.left + (anchorRect.width / 2) - (cardRect.width / 2) + window.scrollX;
+
+  // Keep within viewport horizontally
+  if (left < 8) left = 8;
+  if (left + cardRect.width > window.innerWidth - 8) left = window.innerWidth - cardRect.width - 8;
+
+  // If card would overflow below the viewport, show above
+  if (anchorRect.bottom + 8 + cardRect.height > window.innerHeight) {
+    top = anchorRect.top - cardRect.height - 8 + window.scrollY;
+  }
+
+  card.style.top = `${top}px`;
+  card.style.left = `${left}px`;
+}
+
+function dismissHoverCard() {
+  if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
+  if (activeHoverCard) {
+    activeHoverCard.classList.remove("is-visible");
+    const el = activeHoverCard;
+    setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 200);
+    activeHoverCard = null;
+  }
+}
+
+function showHoverCard(anchorEl, githubUsername) {
+  dismissHoverCard();
+  hoverTimeout = setTimeout(async () => {
+    const profile = await fetchGitHubProfile(githubUsername);
+    if (!profile) return;
+    const localProjects = getLocalContributions(githubUsername);
+    const card = createHoverCard(profile, localProjects, githubUsername);
+    activeHoverCard = card;
+    positionHoverCard(card, anchorEl);
+
+    // Allow hover card to stay when mousing into it
+    card.addEventListener("mouseenter", () => {
+      if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
+    });
+    card.addEventListener("mouseleave", () => {
+      dismissHoverCard();
+    });
+
+    requestAnimationFrame(() => card.classList.add("is-visible"));
+  }, 300); // 300ms debounce
+}
+
+/* ── Palettes & Thumbnails ──────────────────────── */
 
 const PALETTES = [
   ["#efe1cf", "#b86a2b"],
@@ -55,9 +238,14 @@ function placeholderThumb(project) {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
+/* ── Render ──────────────────────────────────────── */
+
 function render() {
   const q = state.query.trim().toLowerCase();
   const list = state.all.filter((p) => {
+    if (state.authorFilter) {
+      return p.author && p.author.github && p.author.github.toLowerCase() === state.authorFilter.toLowerCase();
+    }
     if (state.activeTag && !p.tags.includes(state.activeTag)) return false;
     if (!q) return true;
     return (
@@ -109,6 +297,16 @@ function render() {
     if (p.author) {
       author.textContent = "by " + p.author.name;
       author.href = `https://github.com/${p.author.github}`;
+      author.dataset.github = p.author.github;
+
+      // Hover card events
+      author.addEventListener("mouseenter", (e) => {
+        e.preventDefault();
+        showHoverCard(author, p.author.github);
+      });
+      author.addEventListener("mouseleave", () => {
+        hoverTimeout = setTimeout(() => dismissHoverCard(), 200);
+      });
     } else {
       author.remove();
     }
@@ -124,12 +322,34 @@ function renderTagbar() {
   const tags = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12);
 
   tagbar.replaceChildren();
+
+  // "All" button (also clears author filter)
   const all = document.createElement("button");
   all.type = "button";
   all.textContent = "All";
-  all.setAttribute("aria-pressed", state.activeTag === null);
-  all.addEventListener("click", () => { state.activeTag = null; renderTagbar(); render(); });
+  all.setAttribute("aria-pressed", state.activeTag === null && !state.authorFilter);
+  all.addEventListener("click", () => {
+    state.activeTag = null;
+    state.authorFilter = null;
+    renderTagbar();
+    render();
+  });
   tagbar.appendChild(all);
+
+  // Show active author filter chip
+  if (state.authorFilter) {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "author-filter-chip";
+    chip.innerHTML = `<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> ${state.authorFilter} <span class="chip-close">&times;</span>`;
+    chip.setAttribute("aria-pressed", "true");
+    chip.addEventListener("click", () => {
+      state.authorFilter = null;
+      renderTagbar();
+      render();
+    });
+    tagbar.appendChild(chip);
+  }
 
   for (const [tag] of tags) {
     const b = document.createElement("button");
@@ -138,6 +358,7 @@ function renderTagbar() {
     b.setAttribute("aria-pressed", state.activeTag === tag);
     b.addEventListener("click", () => {
       state.activeTag = state.activeTag === tag ? null : tag;
+      state.authorFilter = null;
       renderTagbar();
       render();
     });
@@ -172,6 +393,7 @@ async function boot() {
 
 search.addEventListener("input", (e) => {
   state.query = e.target.value;
+  state.authorFilter = null;
   render();
 });
 
@@ -182,15 +404,18 @@ if (shuffleBtn) {
 
     const randomProject = activeProjects[Math.floor(Math.random() * activeProjects.length)];
     const cardEl = grid.querySelector(`[data-slug="${randomProject.slug}"]`);
-    
+
     if (cardEl) {
       cardEl.scrollIntoView({ behavior: "smooth", block: "center" });
-      
+
       cardEl.classList.add("card--highlight");
       setTimeout(() => {
         cardEl.classList.remove("card--highlight");
       }, 2000);
     }
+  });
+}
+
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
     const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
@@ -199,11 +424,22 @@ if (themeToggle) {
     localStorage.setItem("theme", newTheme);
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute("content", newTheme === "dark" ? "#0b0c10" : "#f5f1ea");
+  });
+}
+
 if (sortSelect) {
   sortSelect.addEventListener("change", (e) => {
     state.sortBy = e.target.value;
     render();
   });
 }
+
+// Dismiss hover card on scroll or click outside
+document.addEventListener("scroll", dismissHoverCard, true);
+document.addEventListener("click", (e) => {
+  if (activeHoverCard && !activeHoverCard.contains(e.target)) {
+    dismissHoverCard();
+  }
+});
 
 boot();

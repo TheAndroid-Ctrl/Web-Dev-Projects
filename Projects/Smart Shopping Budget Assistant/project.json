@@ -1,16 +1,17 @@
 {
-  "name": "Smart Shopping Budget Assistant",
+  "title": "Smart Shopping Budget Assistant",
   "description": "Plan purchases, monitor shopping expenses in real time, and stay within your budget.",
-  "author": "MistryVishwa",
-  "github": "MistryVishwa",
+  "author": {
+    "name": "MistryVishwa",
+    "github": "MistryVishwa"
+  },
   "tags": [
     "enhancement",
-    "good first issue",
+    "good-first-issue",
     "javascript",
     "frontend",
     "finance",
-    "budgeting",
-    "shopping"
+    "budgeting"
   ],
-  "folder_name": "smart-shopping-budget-assistant"
+  "entry": "index.html"
 }
